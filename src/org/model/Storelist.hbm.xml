@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 17:11:43 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Storelist" table="storelist" catalog="MusicSite">
+        <id name="idStore" type="java.lang.Integer">
+            <column name="idStore"/>
+            <generator class="identity" />
+        </id>
+        <property name="relation" type="string">
+            <column name="relation" length="10" not-null="true" />
+        </property>
+        <property name="stTime" type="timestamp">
+            <column name="st_time" length="19" not-null="true" />
+        </property>
+        <property name="shareCont" type="string">
+            <column name="share_cont" length="45" not-null="true" />
+        </property>
+        <many-to-one name="user"
+            column="us_name" class="org.model.User" lazy="false" cascade="all"></many-to-one>
+        <many-to-one name="song"
+            column="idSong" class="org.model.Song" lazy="false" cascade="all"></many-to-one>
+        
+    </class>
+</hibernate-mapping>

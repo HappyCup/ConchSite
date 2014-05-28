@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Admin" table="admin" catalog="MusicSite">
+        <id name="idAdmin" type="java.lang.Integer">
+            <column name="idAdmin" />
+            <generator class="identity" />
+        </id>
+        <property name="adName" type="string">
+            <column name="ad_name" length="45" not-null="true" />
+        </property>
+        <property name="adPassed" type="string">
+            <column name="ad_passed" length="45" not-null="true" />
+        </property>
+        <property name="adType" type="int">
+            <column name="ad_type" not-null="true">
+                <comment>&#185;&#220;&#192;&#237;&#212;&#177;&#188;&#182;&#177;&#240;&#163;&#186;0&gt;1\n1&#206;&#170;&#198;&#213;&#205;&#168;&#188;&#182;&#177;&#240;</comment>
+            </column>
+        </property>
+        <property name="adPhoto" type="binary">
+            <column name="ad_photo" />
+        </property>
+    </class>
+</hibernate-mapping>

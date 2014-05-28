@@ -1,0 +1,139 @@
+a:link {
+	color: #333;
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active {
+	color: #FFF;
+}
+
+.text1 {
+	font-size: 12px;
+	color: #CCC;
+	background-color: #FFF;
+	height: 24px;
+	width: 190px;
+	font-weight: normal;
+	line-height: 24px;
+	padding-left: 5px;
+	margin-top: 2px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: none;
+	border-right-style: solid;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-color: #666;
+	border-right-color: #666;
+	border-bottom-color: #666;
+	border-left-color: #666;
+}
+
+.button1 {
+	height: 28px;
+	width: 41px;
+	border: 0px none #666;
+	background-image: url(../image/search.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #FFF;
+	cursor: pointer;
+}
+#apDiv2 {
+	position: absolute;
+	width: 700px;
+	height: 300px;
+	z-index: 3;
+	left: 100;
+	top: 210px;
+}
+
+#apDiv3 {
+	position: absolute;
+	width: 300px;
+	height: 280px;
+	z-index: 1;
+	left: 0px;
+	top: 10px;
+}
+
+#apDiv4 {
+	position: absolute;
+	width: 370px;
+	height: 280px;
+	z-index: 2;
+	left: 320px;
+	top: 10px;
+	background-color: #00FFFF;
+	visibility: visible;
+}
+
+#apDiv2 #apDiv4 .songs_table tr td {
+	
+}
+
+#apDiv2 #apDiv4 .songs_table tr td {
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #FFF;
+}
+
+#apDiv5 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+	height: 120px;
+}
+
+#menu {
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+	height: 120px;
+}
+
+#apDiv6 {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background-color: black;
+	opacity: 0.6;
+	z-index: 9;
+	display: block;
+	width: 1349px;
+	height: 1200px;
+	visibility: hidden;
+}
+
+#apDiv7 {
+	position: absolute;
+	width: 900px;
+	height: 115px;
+	z-index: 11;
+	left: 11px;
+	top: 166px;
+}
+
+#main {
+	width: 900px;
+	height: 900px;
+	z-index: 1;
+	background-color: #FFF;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	top: 0px;
+}
+.from {
+border: 1px solid #666;
+}

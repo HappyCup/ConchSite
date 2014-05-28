@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Song" table="song" catalog="MusicSite">
+        <id name="idSong" type="java.lang.Integer">
+            <column name="idSong" />
+            <generator class="identity" />
+        </id>
+        <property name="sgName" type="string">
+            <column name="sg_name" length="45" not-null="true" />
+        </property>
+        <property name="sgType" type="string">
+            <column name="sg_type" length="45" />
+        </property>
+        <property name="sgRoute" type="string">
+            <column name="sg_route" length="45" not-null="true" />
+        </property>
+        <property name="sgMvRoute" type="string">
+            <column name="sg_mv_route" length="45" />
+        </property>
+        <property name="sgSize" type="java.lang.Integer">
+            <column name="sg_size" />
+        </property>
+        <property name="sgScore" type="java.lang.Integer">
+            <column name="sg_score">
+                <comment>
+                &#184;&#232;&#199;&#250;&#198;&#192;&#183;&#214;&#163;&#172;&#191;&#201;&#176;&#180;&#178;&#165;&#183;&#197;&#180;&#206;&#202;&#253;&#181;&#200;&#188;&#198;&#203;&#227;</comment>
+            </column>
+        </property>
+        <property name="sgTime" type="date">
+            <column name="sg_time" length="10">
+                <comment>&#184;&#232;&#199;&#250;&#200;&#213;&#198;&#218;&#163;&#172;&#191;&#201;&#183;&#214;&#177;&#240;&#208;&#194;&#184;&#232;&#190;&#201;&#184;&#232;</comment>
+            </column>
+        </property>
+        <property name="sgWords" type="binary">
+            <column name="sg_words">
+                <comment>&#184;&#232;&#180;&#202;</comment>
+            </column>
+        </property>
+
+        <property name="sgAbstract" type="string">
+            <column name="sg_abstract" length="100">
+                <comment>&#184;&#232;&#199;&#250;&#188;&#242;&#189;&#233;</comment>
+            </column>
+        </property>
+        <set name="singers" table="Singer_Song" lazy="false" cascade="save-update">
+            <key column="idSong"/>
+            <many-to-many class="org.model.Singer" column="idSinger"></many-to-many>
+        </set>
+        <many-to-one name="album" 
+            column="idAlbum" class="org.model.Album" lazy="false" cascade="save-update"></many-to-one>
+    </class>
+</hibernate-mapping>

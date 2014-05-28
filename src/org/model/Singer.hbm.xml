@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Singer" table="singer" catalog="MusicSite">
+        <id name="idSinger" type="java.lang.Integer">
+            <column name="idSinger" />
+            <generator class="identity" />
+        </id>
+        <property name="sgrName" type="string">
+            <column name="sgr_name" length="45" not-null="true" />
+        </property>
+        <property name="sgrArea" type="string">
+            <column name="sgr_area" length="45">
+                <comment>&#184;&#232;&#202;&#214;&#181;&#216;&#199;&#248;</comment>
+            </column>
+        </property>
+        <property name="sgrType" type="string">
+            <column name="sgr_type" length="20">
+            </column>
+        </property>
+        <property name="sgrScore" type="java.lang.Integer">
+            <column name="sgr_score">
+                <comment>
+                &#184;&#232;&#202;&#214;&#198;&#192;&#183;&#214;&#163;&#172;&#191;&#201;&#176;&#180;&#203;&#209;&#203;&#247;&#180;&#206;&#202;&#253;&#163;&#172;&#198;&#228;&#184;&#232;&#199;&#250;&#178;&#165;&#183;&#197;&#180;&#206;&#202;&#253;&#163;&#172;&#187;&#225;&#212;&#177;&#205;&#182;&#198;&#177;&#181;&#200;&#188;&#198;&#203;&#227;&#163;&#172;&#202;&#211;&#199;&#233;&#191;&#246;&#182;&#248;&#182;&#168;</comment>
+            </column>
+        </property>
+        <property name="sgrPhoto" type="binary">
+            <column name="sgr_photo" />
+        </property>
+        <property name="sgrAbstract" type="string">
+            <column name="sgr_abstract" length="300">
+                <comment>&#184;&#232;&#202;&#214;&#188;&#242;&#189;&#233;</comment>
+            </column>
+        </property>
+        <set name="songs" table="Singer_Song" lazy="false" cascade="save-update" inverse="false">
+            <key column="idSinger"></key>
+            <many-to-many class="org.model.Song" column="idSong"></many-to-many>
+        </set>
+        <set name="albums" lazy="false" inverse="false" cascade="save-update">
+            <key column="idSinger"></key>
+            <one-to-many class="org.model.Album"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+
+<!-- Website Design By: www.happyworm.com -->
+<title>Demo : jPlayer as an audio playlist player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css" />
+<link href="playpage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="js/jplayer.playlist.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+var myPlaylist=" #list_box";
+var currentPlaylist;
+var playlistArray_defu=new Array(
+		{
+			title:"Hidden",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg"
+		},
+		{
+			title:"Lentement",
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg"
+		},
+		{
+			title:"Beside Me",
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-06-Beside-me.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-06-Beside-me.ogg"
+		},
+		{
+			title:"Bubble",
+			free:true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg"
+		},
+		{
+			title:"Partir",
+			free: true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
+		},
+		{
+			title:"Partir",
+			free: true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
+		},
+		{
+			title:"Partir",
+			free: true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
+		}
+	);
+var playlistArray2_stored=new Array(
+		{
+			title:"Partir",
+			free: true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
+		},
+		{
+			title:"Partir",
+			free: true,
+			mp3:"http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
+			oga:"http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg"
+		});
+
+$(document).ready(function(){
+
+	myPlaylist =new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1",
+		playlistCSS: " #list_box"
+	},playlistArray_defu, {
+		playlistOptions: {
+		    enableRemoveControls: true
+		  },
+		swfPath: "js",
+		supplied: "webma, oga, mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+	
+	myPlaylist2 =new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_1",
+		cssSelectorAncestor: "#jp_container_1",
+		playlistCSS: " #list_box_stored"
+	},playlistArray2_stored, {
+		playlistOptions: {
+		    enableRemoveControls: true
+		  },
+		swfPath: "js",
+		supplied: "webma, oga, mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+	
+	// ??????
+	var _top = $("div.jp-playlist").height();
+	//alert(_top);
+	//$("div.jp-playlist").css("top", (_top - 9) * (-1) + "px");
+	$("#list_box>div.jp-playlist>div").toggle(
+	    function () {
+	    	$("#list_box>div.jp-playlist").animate({
+	    	    "top": "0"
+	    	},400);
+			$("#list_box>div.jp-playlist").css("display", "block");
+			//alert(1);
+		},
+		function () {
+			var _top = $("#list_box>div.jp-playlist").height();
+	    	$("#list_box>div.jp-playlist").animate({
+	    		"top": (_top - 9) * (-1) + "px"
+	    	},400);
+			$("#list_box>div.jp-playlist").css("display", "block");
+			//alert(2);
+		}
+	);//.trigger('click');
+	
+		$("#list_box_stored>div.jp-playlist>div").toggle(
+	    function () {
+	    	$("#list_box_stored>div.jp-playlist").animate({
+	    	    "top": "0"
+	    	},400);
+			$("#list_box_stored>div.jp-playlist").css("display", "block");
+			//alert(1);
+		},
+		function () {
+			var _top = $("#list_box_stored>div.jp-playlist").height();
+	    	$("#list_box_stored>div.jp-playlist").animate({
+	    		"top": (_top - 9) * (-1) + "px"
+	    	},400);
+			$("#list_box_stored>div.jp-playlist").css("display", "block");
+			//alert(2);
+		}
+	);//.trigger('click');
+	
+	$("div.jp-operation div.jp-store").click(function(){
+		if(currentPlaylist==" #list_box"){
+			var file=myPlaylist.currentfile();
+			var length=file.mp3.length;
+			var songid=file.mp3.substr(length-1);
+			//alert(songid);
+			if(myPlaylist2.add(file,false)){
+				$.get("islogin.action",
+						function(data,status){
+					var res=$(data).find("resultID").text();
+					if(res==1){
+						alert("请先登录或注册!");
+					}
+					else{
+						$.post("store.action",
+						  {
+							idSong:songid
+						  },
+						  function(data,status){
+							alert("Data: " + data + "\nStatus: " + status);
+						  });
+						}
+					
+				});
+		}}
+	});
+	
+	function loadstorelist(){
+		//$.get("getstorelist.action",function(data,status){
+		//    alert("Data: " + data + "\nStatus: " + status);
+		//  });
+		
+		$.getJSON("getstorelist.action",
+				{ "resultType": "json" }, 
+				function(data,status){
+					alert(data.length+"asd");
+					//$.each(data, function(i,item){
+						//alert(i+"|"+item);
+						//myPlaylist2.add(item,false);
+					 // });
+				});
+	}
+	$.get("islogin.action",
+			function(data,status){
+		var res=$(data).find("resultID").text();
+		if(res==1){
+		}
+		else{
+			loadstorelist();
+		}
+	});
+});
+function checklogin(){
+	$.get("islogin.action",
+			function(data,status){
+		var res=$(data).find("resultID").text();
+		if(res==1){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+}
+function share_submit(){
+	var idsong=$("#singid").text();
+	var share_con=$("#f_text").val();
+	alert(idsong);
+	$.post("share.action",
+			{idSong:idsong,
+		sharecont:share_con},
+		function(data,status){
+			$("fen_window").css("display","none");
+		});
+}
+function closeshare(){
+	//alert("sd");
+	$("#fen_window").css("display","none");
+}
+//]]>
+</script>
+</head>
+<body>
+
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+
+		<div id="jp_container_1" class="jp-audio">
+			<div class="jp-type-playlist">
+				<div class="jp-gui jp-interface">
+					<ul class="jp-controls">
+						<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+						<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+                        <li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+						<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+                        <li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+						<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+						<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+						<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+					</ul>
+					<div class="jp-progress">
+						<div class="jp-seek-bar">
+							<div class="jp-play-bar"></div>
+						</div>
+					</div>
+					<div class="jp-volume-bar">
+						<div class="jp-volume-bar-value"></div>
+					</div>
+					<div class="jp-time-holder">
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+					</div>
+                    <div class="jp-operation">
+						<div class="jp-share"></div>
+						<div class="jp-store"></div>
+					</div>
+					<ul class="jp-toggles">
+						<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+						<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+						<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+						<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+					</ul>
+				</div>
+                <div id="list_box">
+				<div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+                    <div><span></span></div>
+				</div>
+                </div>
+                <div id="list_box_stored">
+				<div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+                    <div><span></span></div>
+				</div>
+                </div>
+				<div class="jp-no-solution">
+					<span>Update Required</span>
+					To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+				</div>
+			</div>
+		</div>
+		
+	<div id="fen_window">
+    <table width="380" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <th height="30" bgcolor="#BFE1FF" style="color: #0055A2" scope="col"><div align="left">分享</div></th>
+      </tr>
+    </table>
+    <div id="song" style="display:none">
+      <form>
+        <textarea name="singid" id="singid" cols="45" rows="1"></textarea>
+      </form>
+    </div>
+    <div id="fen_text">
+      <form id="form1" name="form1" method="post" action="">
+        <label for="f_text"></label>
+        <textarea name="f_text" id="f_text" cols="45" rows="5"></textarea>
+      </form>
+    </div>
+    <div id="fenbutton">
+      <table width="200" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <th scope="col"><form id="form2" name="form2" method="post" action="javascript:share_submit();">
+            <input type="submit" style="height:30px; width:80px;" name="y" id="y" value="确定" />
+          </form></th>
+          <th scope="col"><form id="form3" name="form3" method="post" action="javascript:closeshare();">
+            <input type="submit" name="n" id="n" value="取消"style="height:30px; width:80px;" />
+          </form></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

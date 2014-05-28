@@ -1,0 +1,80 @@
+@charset "utf-8";
+.login a {
+color: #888;
+text-decoration: none;
+outline: 0;
+}
+.blue {
+color: #45BEEE!important;
+text-decoration: underline;
+margin-right: 5px;
+display: inline-block;
+}
+.style_box {
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 14px;
+	background-color: #FFF;
+	display: block;
+	padding: 5px;
+	height: 300px;
+	width: 780px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+}
+.styleImg_box {
+	background-color: #0FC;
+	height: 280px;
+	width: 300px;
+	background-image: url(images/rock.jpg);
+	overflow: hidden;
+	display: inline-block;
+}
+.styleTable_box {
+	background-color: #CF3;
+	height: 280px;
+	width: 450px;
+	display: inline-block;
+	vertical-align: top;
+}
+td, th {
+display: table-cell;
+vertical-align: middle;
+}
+.songs_table th, .songs_table td {
+border-bottom: 1px solid #f3f3f3;
+height: 34px;
+overflow: hidden;
+}
+
+.songs_table th {
+width: 25px;
+}
+.songs_table td.fct {
+	width: 80px;
+}
+.songs_table td.fct a {
+display: inline-block;
+height: 16px;
+width: 16px;
+background: url(images/btu_4.jpg) no-repeat;
+}
+.songs_table td.fct a.add {
+margin-left: 6px;
+background-position: -16px 0;
+}
+.songs_table td.fct a.download {
+margin-left: 6px;
+background-position: -32px 0;
+}
+a {
+color: #000;
+text-decoration: none;
+outline: none;
+hide-focus: expression(this.hideFocus=true);
+}

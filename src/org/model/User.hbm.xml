@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.User" table="user" catalog="MusicSite">
+        <id name="usName" type="string">
+            <column name="us_name" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="usPasswd" type="string">
+            <column name="us_passwd" length="45" not-null="true" />
+        </property>
+        <property name="usEmail" type="string">
+            <column name="us_email" length="45" />
+        </property>
+        <property name="usPhoto" type="binary">
+            <column name="us_photo" />
+        </property>
+        <set name="storeList" lazy="false" inverse="false" cascade="all">
+            <key column="us_name"></key>
+            <one-to-many class="org.model.Storelist"/>
+        </set>
+    </class>
+</hibernate-mapping>

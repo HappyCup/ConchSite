@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"  
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    
+<struts>
+    <include file="struts-default.xml"></include>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="login" class="loginAction">
+            <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        
+        <action name="logout" class="loginAction" method="logout">
+            <result name="success">/hailuo.jsp</result>
+        </action>
+        
+        <action name="islogin" class="loginAction" method="isLogin">
+            <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        <action name="updatePasswd" class="loginAction" method="updatePassword">
+            <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        <action name="UserNameValidate" class="RegisteAction" method="validateUserName">
+            <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        
+        <action name="Registe" class="RegisteAction">
+            <result name="success">/hailuo.jsp</result>
+            <result name="error">/login_error.jsp</result>
+        </action>
+        
+        <action name="GetImg" class="UserAction" method="getImg">
+            <result name="success" type="stream">
+                <param name="contentType">image/jpg</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        
+        <action name="GetUserImg" class="UserAction" method="getUserImg">
+            <result name="success" type="stream">
+                <param name="contentType">image/jpg</param>
+                <param name="inputName">inputStream</param>
+            </result>
+        </action>
+        
+        <!-- 排行榜action -->
+        <action name="ranklist" class="SongInfoAction" method="RinkList">
+            <result name="success">/ranklist.jsp</result>
+        </action>
+        
+        <action name="GetHotSongsAction" class="SongInfoAction" method="getHotSongs"></action>
+        
+        <action name="GetNewSongsAction" class="SongInfoAction" method="getNewSongs"></action>
+        
+        <action name="SingerRank" class="SingerInfoAction" method="getSingerRank"></action>
+        
+        <action name="SingerImg" class="SingerInfoAction" method="getImg">
+          	<result name="success" type="stream">
+                <param name="contentType">image/jpg</param>
+                <param name="inputName">singerImg</param>
+            </result>
+        </action>
+        
+        <action name="GetSongData" class="SongInfoAction" method="getSongDataById">
+            <result name="weba" type="stream">
+                <param name="contentType">audio/webm</param>
+                <param name="inputName">songStream</param>
+            </result>
+            <result name="mp3" type="stream">
+                <param name="contentType">audio/mpeg</param>
+                <param name="inputName">songStream</param>
+            </result>
+        </action>
+        
+        <!-- 下载 -->
+        <action name="DownLoad" class="SongInfoAction" method="download">
+            <result name="success" type="stream">
+                <param name="contentType">audio/mpeg</param>    <!-- 类型有待改进 -->
+                <param name="inputName">songStream</param>
+                <param name="contentDisposition">attachment;filename='${sgName+"-"+sgrName}'</param>  
+            </result>
+            <result name="error">/ValidateResulte.jsp</result>
+        </action>
+        
+        <action name="getSingerPage" class="SingerInfoAction" method="SgrInAreaAndType">
+            <result name="success">/singerPage.jsp</result>
+        </action>
+        
+        <action name="queryAllSinger" class="SingerInfoAction" method="allSinger">
+            <result name="success">/singerPage.jsp</result>
+        </action>
+        
+        <action name="feedback" class="FeedBackAction">
+            <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        
+        <!-- 进入歌手主页,查看歌手详细信息 -->
+        <action name="singerHome" class="SingerInfoAction" method="singerHome">
+            <result name="success">/singerHome.jsp</result>
+        </action>
+        
+        <!-- 搜索action -->
+        <action name="search" class="SearchAction">
+            <result name="success">/searchResultPage.jsp</result>
+        </action>
+        
+        <!-- 专辑相关action -->
+        <action name="queryAllAlbum" class="AlbumInfoAction" method="allAlbum">
+            <result name="success">/albumPage.jsp</result>
+        </action>
+        <action name="getAlbumPage" class="AlbumInfoAction" method="AlbumInArea">
+            <result name="success">/albumPage.jsp</result>
+        </action>
+        <action name="albumHome" class="AlbumInfoAction" method="albumHome">
+            <result name="success">/albumHome.jsp</result>
+        </action>
+        <action name="AlbumImg" class="AlbumInfoAction" method="getImg">
+          	<result name="success" type="stream">
+                <param name="contentType">image/jpg</param>
+                <param name="inputName">albumImg</param>
+            </result>
+        </action>
+        
+        <!-- 用户主页相关action -->
+        <action name="updateAvator" class="UserAction" method="updateAvator">
+           <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        <action name="updatePassWord" class="UserAction" method="updatePassword">
+           <result name="success">/ValidateResulte.jsp</result>
+        </action>
+        
+        <!-- 分享栏 -->
+        <action name="shareArea" class="ShareAndStoreAction" method="shareArea">
+           <result name="success">/share_area.jsp</result>
+        </action>
+        
+        <!-- 获得用户的动态 -->
+        <action name="userMotion" class="ShareAndStoreAction" method="userMotions"></action>
+        
+        <!-- 获取登录用户的收藏列表 -->
+        <action name="getstorelist" class="ShareAndStoreAction" method="getStorelist">
+           <result name="success">/storelist_json.jsp</result>
+        </action>
+        
+        <!-- 添加收藏 -->
+         <action name="store" class="ShareAndStoreAction" method="store">
+             <result name="success">/ValidateResulte.jsp</result>
+         </action>
+         <action name="share" class="ShareAndStoreAction" method="addShare">
+             <result name="success">/ValidateResulte.jsp</result>
+         </action>
+    </package>
+</struts>

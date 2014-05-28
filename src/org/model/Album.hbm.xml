@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Album" table="album" catalog="MusicSite">
+        <id name="idAlbum" type="java.lang.Integer">
+            <column name="idAlbum" />
+            <generator class="identity" />
+        </id>
+
+        <property name="abName" type="string">
+            <column name="ab_name" length="45" not-null="true" />
+        </property>
+        <property name="abTime" type="date">
+            <column name="ab_time" length="0" />
+        </property>
+        <property name="abPhoto" type="binary">
+            <column name="ab_photo" />
+        </property>
+        <property name="abAbstact" type="string">
+            <column name="ab_abstact" length="100">
+                <comment>&#215;&#168;&#188;&#173;&#188;&#242;&#189;&#233;</comment>
+            </column>
+        </property>
+        <property name="abScore" type="java.lang.Integer">
+            <column name="ab_score" />
+        </property>
+        
+        <many-to-one name="singer"
+            column="idSinger" class="org.model.Singer" cascade="save-update"></many-to-one>
+        
+        <set name="songs" lazy="false" inverse="false" cascade="save-update">
+            <key column="idAlbum"></key>
+            <one-to-many class="org.model.Song"/>
+        </set>
+    </class>
+</hibernate-mapping>

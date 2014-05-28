@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 17:29:57 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Comment" table="comment" catalog="MusicSite">
+        <id name="idComment" type="java.lang.Integer">
+            <column name="idComment" />
+            <generator class="identity" />
+        </id>
+        <property name="usName" type="string">
+            <column name="us_name" length="45" not-null="true" />
+        </property>
+        <property name="idSong" type="int">
+            <column name="idSong" not-null="true" />
+        </property>
+        <property name="cmTime" type="timestamp">
+            <column name="cm_time" length="19" not-null="true" />
+        </property>
+        <property name="cmContent" type="string">
+            <column name="cm_content" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

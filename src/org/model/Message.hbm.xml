@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="org.model.Message" table="message" catalog="MusicSite">
+        <id name="idMessage" type="java.lang.Integer">
+            <column name="idMessage" />
+            <generator class="identity" />
+        </id>
+        <property name="usName" type="string">
+            <column name="us_name" length="45" />
+        </property>
+        <property name="msContent" type="string">
+            <column name="ms_content" length="500" not-null="true" />
+        </property>
+        <property name="contactInfo" type="string">
+            <column name="contact_info" length="100" />
+        </property>
+        <property name="msTime"  type="timestamp" generated="always" not-null="true">
+            <column name="ms_time" length="19" sql-type="timestamp" default="CURRENT_TIMESTAMP"/>
+        </property>
+    </class>
+</hibernate-mapping>
