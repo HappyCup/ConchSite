@@ -29,20 +29,27 @@ public class Test {
 //		admin.setAdName("lihuan2");
 //		admin.setAdPassed("lihuan");
 //		admin.setAdType(0);
-//		ApplicationContext context=new FileSystemXmlApplicationContext("WebContent/WEB-INF/applicationContext.xml");
+		ApplicationContext context=new FileSystemXmlApplicationContext("WebContent/WEB-INF/classes/applicationContext.xml");
 //		AdminDao adminDao=(AdminDao)context.getBean("AdminDao");
 //		adminDao.addAdmin(admin);
-//		User user=new User();
-//		user.setUsName("lihuan");
-//		user.setUsPasswd("lihuan");
-//		user.setUsEmail("asdf@qq.com");
-		ApplicationContext context=new FileSystemXmlApplicationContext("WebContent/WEB-INF/applicationContext.xml");
+		User user=new User();
+		user.setUsName("lihuan");
+		user.setUsPasswd("lihuan");
+		user.setUsEmail("asdf@qq.com");
 		UserDao userDao=(UserDao)context.getBean("UserDao");
+		try{
+			User lihuan=userDao.validate("lihuan123132");//addUser(user);
+			System.out.println(lihuan==null?"user is null":" user is not null: "+lihuan.getUsName());
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			System.out.println("it is runtime exception");
+		}
 //		SingerDao singerDao=(SingerDao)context.getBean("SingerDao");
 //		Singer singer=singerDao.getById(6);
 //		AlbDao albdao=(AlbDao)context.getBean("AlbDao");
 		STLDao stldao=(STLDao)context.getBean("STLDao");
 		SongDao songdao=(SongDao)context.getBean("SongDao");
+		System.out.println("ok");
 //		System.out.print(singer.getSgrName()+"\n");
 //		Set set=singer.getSongs();
 //		if(set==null)
@@ -115,8 +122,8 @@ public class Test {
 //		stl.setId(new StorelistId("lihuan",1));
 //		stl.setRelation("store");
 //		stldao.add(stl);
-		List list=stldao.allShare();
-		System.out.println(list.size());
+//		List list=stldao.allShare();
+//		System.out.println(list.size());
 //		Iterator it=list.iterator();
 //		Storelist stl=(Storelist) it.next();
 //		System.out.println(stl.getUser().getUsName());

@@ -6,7 +6,18 @@
 <struts>
     <include file="struts-default.xml"></include>
     <package name="default" namespace="/" extends="struts-default">
-        <action name="login" class="loginAction">
+    
+    	<default-action-ref name="pagenotfound"></default-action-ref>
+    	<!-- global error page -->
+    	<global-results>
+    		<result name="error">/common/error.html</result>
+    	</global-results>
+    	<global-exception-mappings>
+    		<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+    	</global-exception-mappings>
+    	
+    	
+    	<action name="login" class="loginAction">
             <result name="success">/ValidateResulte.jsp</result>
         </action>
         
@@ -77,7 +88,7 @@
             <result name="success" type="stream">
                 <param name="contentType">audio/mpeg</param>    <!-- 类型有待改进 -->
                 <param name="inputName">songStream</param>
-                <param name="contentDisposition">attachment;filename='${sgName+"-"+sgrName}'</param>  
+                <param name="contentDisposition">attachment;filename='${sgName+"-"+sgrName}'</param> 
             </result>
             <result name="error">/ValidateResulte.jsp</result>
         </action>
@@ -154,5 +165,6 @@
          <action name="ToHtml" class="JspToHtml">
              <result name="success">/hailuo.html</result>
          </action>
+         
     </package>
 </struts>

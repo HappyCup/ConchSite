@@ -32,7 +32,7 @@ a:active {
 	width:700px;
 	height:195px;
 	z-index:10;
-	background-image: url(image/bg.jpg);
+	background-image: url(../image/bg.jpg);
 	border-bottom-width: 2px;
 	border-bottom-style: dotted;
 	border-bottom-color: #CCC;

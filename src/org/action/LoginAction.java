@@ -55,6 +55,7 @@ public class LoginAction extends ActionSupport{
 		if(user!=null){
 			Map session=(Map)ActionContext.getContext().getSession();
 			session.put("user", user);
+			int i=1/0;
 			valiResult="0";        //µÇÂ¼
 		}
 		else{
