@@ -169,18 +169,28 @@ public class SingerDaoImp implements SingerDao {
 	@Override
 	public Singer getById(int idSinger) {
 		// TODO 自动生成的方法存根
+		
+		Session session=sessionFactory.getCurrentSession();
+		Transaction ts=session.beginTransaction();
 		try{
-			Session session=sessionFactory.getCurrentSession();
-			Transaction ts=session.beginTransaction();
 			Query query=session.createQuery("from Singer where idSinger=?");
 			query.setParameter(0, idSinger);
 			query.setMaxResults(1);
 			Singer singer=(Singer)query.uniqueResult();
 			ts.commit();
+			ts=null;
 			return singer;
 		}catch (Exception e){
 			e.printStackTrace();
 			return null;
+		}
+		finally{
+			if(ts!=null){
+				ts.rollback();
+			}
+			if(sessionFactory.getCurrentSession().getTransaction().wasCommitted()){
+				sessionFactory.getCurrentSession().getTransaction().commit();
+			}
 		}
 	}
 

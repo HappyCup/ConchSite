@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="org.model.User" table="user" catalog="MusicSite">
+    <class name="org.model.User" table="user">
         <id name="usName" type="string">
             <column name="us_name" length="45" />
             <generator class="assigned" />

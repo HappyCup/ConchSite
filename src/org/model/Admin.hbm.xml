@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2013-4-21 11:41:17 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="org.model.Admin" table="admin" catalog="MusicSite">
+    <class name="org.model.Admin" table="admin">
         <id name="idAdmin" type="java.lang.Integer">
             <column name="idAdmin" />
             <generator class="identity" />

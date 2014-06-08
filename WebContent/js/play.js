@@ -18,7 +18,7 @@
 
 
 var playpage;
-function onplay(sgname,sgrName,sgID){
+function onmusicplay(sgname,sgrName,sgID){
 	var addAndplay=function addAndplay(){
 		playpage.myPlaylist.add({
 			title:sgname,

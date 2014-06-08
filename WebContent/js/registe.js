@@ -67,7 +67,7 @@ document.getElementById ("uEmail").onblur=function()
 	var s=document.getElementById ("uEmail").value;
 	var reg=new RegExp("^[\\w-]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w-]+)+$");
 	if(reg.test(s))
-	{	
+	{
 		document.getElementById("uEmail_alter").className="hl_lgn_tips hl_lgn_tips_success";
 		usrEmailRight=true;
 	}
@@ -136,23 +136,28 @@ document.getElementById ("uRepassword").onblur=function()
 	}
 }
 
-document.getElementById ("uSubmitBtn").onclick=function()
+function checkID()
 {
+//	var form=document.uRegForm;
 	if(userNameRight&&usrEmailRight&&userPasswdRight){
-		content="username="+document.getElementById ("uUsername").value+
-			"&userpasswd="+document.getElementById ("uPassword").value+
-			"&useremail="+document.getElementById ("uEmail").value;
-		xmlHttpRequest=createXmlGttpRequest();
-		xmlHttpRequest.open("POST","Registe.action",true);
-		xmlHttpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-		xmlHttpRequest.send(content);
-		xmlHttpRequest.onreadystatechange=function(){
-			if(xmlHttpRequest.readyState==4){
-				if(xmlHttpRequest.status=200){
-					location.replace(xmlHttpRequest.responseText);
-					//location.href="http://localhost:8081/ConchSite/mainPage/mainPage.jsp";
-				}
-			}
-		};
+		return true;
+//		content="username="+document.getElementById ("uUsername").value+
+//			"&userpasswd="+document.getElementById ("uPassword").value+
+//			"&useremail="+document.getElementById ("uEmail").value;
+//		xmlHttpRequest=createXmlGttpRequest();
+//		xmlHttpRequest.open("POST","Registe.action",true);
+//		xmlHttpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//		xmlHttpRequest.send(content);
+//		xmlHttpRequest.onreadystatechange=function(){
+//			if(xmlHttpRequest.readyState==4){
+//				if(xmlHttpRequest.status=200){
+//					location.replace(xmlHttpRequest.responseText);
+//					//location.href="http://localhost:8081/ConchSite/mainPage/mainPage.jsp";
+//				}
+//			}
+//		};
+	}
+	else{
+		return false;
 	}
 }

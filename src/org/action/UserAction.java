@@ -6,8 +6,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.dao.UserDao;
 import org.model.User;
 import org.tool.ImageCut;
@@ -76,45 +80,19 @@ public class UserAction extends ActionSupport{
 				inputStream=new ByteArrayInputStream(user.getUsPhoto());
 		}
 		else{
-			try{
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				InputStream input = new BufferedInputStream(new FileInputStream("C:/Users/HP/workspace/ConchSite/WebContent/image/head-default.jpg"));
-				byte[] bt = new byte[1024];
-				while (input.read(bt) > 0) {
-					bos.write(bt);
-				}
-				this.inputStream = new ByteArrayInputStream(bos.toByteArray());
-				bos.close();
-				input.close();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
+			setDefaultHead();
 		}
 		return SUCCESS;
 	}
 	
 	//根据username获取用户图片
 	public String getUserImg(){
-//		Map session=(Map)ActionContext.getContext().getSession();
-//		User user=(User)session.get("user");
 		User user=userdao.validate(username);
 		if(user!=null && user.getUsPhoto()!=null){
 				inputStream=new ByteArrayInputStream(user.getUsPhoto());
 		}
 		else{
-			try{
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				InputStream input = new BufferedInputStream(new FileInputStream("C:/Users/HP/workspace/ConchSite/WebContent/image/head-default.jpg"));
-				byte[] bt = new byte[1024];
-				while (input.read(bt) > 0) {
-					bos.write(bt);
-				}
-				this.inputStream = new ByteArrayInputStream(bos.toByteArray());
-				bos.close();
-				input.close();
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
+			setDefaultHead();
 		}
 		return SUCCESS;
 	}
@@ -131,10 +109,28 @@ public class UserAction extends ActionSupport{
 			User user=(User) session.get("user");
 			user.setUsPhoto(buffer);
 			userdao.update(user);
-			
-			//System.out.println("success////////////////////////////////////");
 		}
 		return SUCCESS;
 	}
 	
+	private void setDefaultHead(){
+		try{
+			ActionContext ctx=ActionContext.getContext();
+			HttpServletRequest request = (HttpServletRequest)ctx.get(ServletActionContext.HTTP_REQUEST);
+			String uploadFolder = request.getRealPath("");
+			//System.out.println(uploadFolder+"/image/head-default.jpg");
+			
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			InputStream input = new BufferedInputStream(new FileInputStream(uploadFolder+"/image/head-default.jpg"));
+			byte[] bt = new byte[1024];
+			while (input.read(bt) > 0) {
+				bos.write(bt);
+			}
+			this.inputStream = new ByteArrayInputStream(bos.toByteArray());
+			bos.close();
+			input.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

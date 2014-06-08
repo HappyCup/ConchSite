@@ -38,7 +38,7 @@
                 <span class="uName"><a href="#" target="_blank" ><s:property value="#column.key.sgrName"/></a></span>
              </td>
              <td class="fct">
-             	<a href="javascript:onplay('<s:property value="#column.value.sgName"/>','<s:property value="#column.key.sgrName"/>','<s:property value="#column.value.idSong"/>');" class="play"></a>
+             	<a href="javascript:onmusicplay('<s:property value="#column.value.sgName"/>','<s:property value="#column.key.sgrName"/>','<s:property value="#column.value.idSong"/>');" class="play"></a>
              	<a href="javascript:onadd('<s:property value="#column.value.sgName"/>','<s:property value="#column.key.sgrName"/>','<s:property value="#column.value.idSong"/>');" class="add"></a>
                 <a href="javascript:;" class="download"></a>
              </td>

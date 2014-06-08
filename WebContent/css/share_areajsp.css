@@ -1,0 +1,74 @@
+#apDiv24 {
+	position:relative;
+	width:900px;
+	height:900px;
+	z-index:1;
+	margin-right: auto;
+	margin-left: auto;
+	top: -30px;
+	color: #000;
+}
+
+#fenxiang {
+	position:absolute;
+	width:700px;
+	height:600px;
+	z-index:1;
+	left: 1px;
+	top: 1px;
+	border: 2px solid #BFE1FF;
+}
+a:visited {
+	color: #333;
+}
+a:hover {
+	color: #333;
+}
+a:active {
+	color: #333;
+}
+.fen_div {
+	position:relative;
+	width:700px;
+	height:195px;
+	z-index:10;
+	background-image: url(image/bg.jpg);
+	border-bottom-width: 2px;
+	border-bottom-style: dotted;
+	border-bottom-color: #CCC;
+}
+.fen {
+	position:absolute;
+	width:60px;
+	height:60px;
+	z-index:1;
+	top: 20px;
+	left: 20px;
+}
+.apDiv26 {
+	position:absolute;
+	width:560px;
+	height:130px;
+	z-index:2;
+	left: 110px;
+	top: 40px;
+	border: 3px solid #CCE8FB;
+}
+.fen_top {
+	position:absolute;
+	width:500px;
+	height:30px;
+	z-index:3;
+	left: 110px;
+	top: 10px;
+}
+.fen1_time {
+	position:absolute;
+	width:400px;
+	height:30px;
+	z-index:5;
+	left: 10px;
+	top: 170px;
+	color: #999;
+	font-size: 13px;
+}

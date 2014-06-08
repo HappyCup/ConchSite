@@ -1,0 +1,218 @@
+.fankui {
+	height: 200px;
+	width: 600px;
+}
+#num1 {
+	position:absolute;
+	width:250px;
+	height:400px;
+	z-index:1;
+	left: 10px;
+	top: 10px;
+}
+#apDiv8 {
+	position:absolute;
+	width:250px;
+	height:400px;
+	z-index:1;
+	left: 10px;
+	top: 10px;
+	background-color: #FFFFFF;
+}
+#apDiv9 {
+	position:relative;
+	width:900px;
+	height:500px;
+	z-index:1;
+	visibility: visible;
+	background-color: #FFF;
+	border: 1px solid #E8E8E8;
+}
+.xinggeban {
+	font-size: 25px;
+	color: #000;
+}
+.music_ban {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-top-color: #EEE;
+	border-right-color: #EEE;
+	border-bottom-color: #EEE;
+	border-left-color: #EEE;
+	height: 450px;
+}
+.nusic_num {
+	color: #009;
+	font-weight: bold;
+}
+.singer {
+	color: #000;
+}
+.zzzzzzzzzz {
+	font-weight: normal;
+	color: #000;
+}
+.gengduo {
+	font-size: 12px;
+	color: #000;
+}
+#apDiv10 {
+	position:relative;
+	width:900px;
+	height:250px;
+	z-index:10;
+	margin-right: auto;
+	margin-left: auto;
+}
+#main #apDiv9 table tr td .music_ban tr th .music_ban {
+	font-weight: bold;
+}
+#apDiv11 {
+	position:relative;
+	width:900px;
+	height:290px;
+	z-index:1;
+	border: 1px none #F0F0F0;
+	top: 20px;
+}
+#main #apDiv9 table tr td {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#apDiv12 {
+	position:relative;
+	width:860px;
+	height:230px;
+	z-index:1;
+	top: 20px;
+	left: 20px;
+}
+#main #apDiv11 #apDiv12 table tr th {
+	font-size: 15px;
+	font-weight: normal;
+}
+#apDiv13 {
+	position:relative;
+	width:110px;
+	height:20px;
+	z-index:3;
+	left: 0px;
+	top: -20px;
+	color: #FFF;
+	background-color: #CCC;
+}
+#apDiv14 {
+	position:relative;
+	width:110px;
+	height:20px;
+	z-index:3;
+	top: -20px;
+	color: #FFF;
+	background-color: #999;
+	opacity: 0.9;
+}
+#apDiv15 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:10;
+}
+#apDiv16 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:10;
+}
+#apDiv17 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:10;
+}
+#apDiv18 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:10;
+}
+#apDiv19 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:10;
+}
+#apDiv20 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:10;
+}
+#main #apDiv11 #apDiv12 table {
+	font-size: 15px;
+	color: #000;
+}
+#apDiv21 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:4;
+}
+#apDiv22 {
+	position:relative;
+	width:900px;
+	height:30px;
+	z-index:2;
+	top: 30px;
+	color: #FFF;
+	background-color: #EEE;
+}
+#main #apDiv11 #apDiv22 table tr th {
+	color: #682996;
+}
+#main #apDiv11 #apDiv22 table {
+	font-size: 13px;
+	color: #000;
+}
+th {
+	font-size: 13px;
+	color: #FFF;
+}
+#apDiv23 {
+	position:relative;
+	width:500px;
+	height:700px;
+	z-index:2;
+	top: 100px;
+	border: medium none #73327C;
+	background-color: #8D53EE;
+}
+#main #apDiv23 table tr th h2 {
+	color: #FFF;
+	font-size: 20px;
+}
+#main #apDiv11 #apDiv12 table tr th strong {
+	color: #000;
+	font-size: 25px;
+}
+#apDiv24 {
+	position:relative;
+	width:800px;
+	height:220px;
+	z-index:1;
+	margin-right: auto;
+	margin-left: auto;
+	top: 00px;
+	color: #000;
+	background-color: #FFFFFF;
+}
+#apDiv25 {
+	position:relative;
+	width:800px;
+	height:130px;
+	z-index:10;
+	margin-right: auto;
+	margin-left: auto;
+	top: 10px;
+}

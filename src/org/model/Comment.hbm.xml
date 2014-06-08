@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2013-4-21 17:29:57 by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="org.model.Comment" table="comment" catalog="MusicSite">
+    <class name="org.model.Comment" table="comment">
         <id name="idComment" type="java.lang.Integer">
             <column name="idComment" />
             <generator class="identity" />

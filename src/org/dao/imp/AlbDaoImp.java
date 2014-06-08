@@ -76,7 +76,7 @@ public class AlbDaoImp implements AlbDao {
 		try{
 			Session session=sessionFactory.getCurrentSession();
 			Transaction ts=session.beginTransaction();
-			Query query=session.createQuery("select stl from Storelist as stl where abName=?");//目前是完全匹配;;;;
+			Query query=session.createQuery("select stl from Album as stl where abName=?");//目前是完全匹配;;;;
 			query.setParameter(0, AlbName);
 			List list=query.list();
 			ts.commit();

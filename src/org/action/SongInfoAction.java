@@ -19,6 +19,7 @@ import org.dao.SingerDao;
 import org.dao.SongDao;
 import org.model.Singer;
 import org.model.Song;
+import org.tool.AccessSongFile;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -27,7 +28,8 @@ public class SongInfoAction extends ActionSupport{
 	private Integer idSong;
 	private String sgName;
 	private String sgrName;
-	private ByteArrayInputStream songStream;
+	//private ByteArrayInputStream songStream;
+	private InputStream songStream;
 	private SongDao songdao;
 	private SingerDao singerdao;
 	private String sgftype;            //歌曲文件类型
@@ -37,7 +39,7 @@ public class SongInfoAction extends ActionSupport{
 	private List ranklist;              //排行榜
 	private String area;                //地域
 	
-	public ByteArrayInputStream getSongStream() {
+	public InputStream getSongStream() {
 		return songStream;
 	}
 
@@ -107,7 +109,7 @@ public class SongInfoAction extends ActionSupport{
 
 	//地域排行榜
 	public String RinkList() throws UnsupportedEncodingException{
-		System.out.println(area);
+//		System.out.println(area);
 		if(area.equals("cn"))
 			area="华语";
 		if(area.equals("jk"))
@@ -115,7 +117,7 @@ public class SongInfoAction extends ActionSupport{
 		if(area.equals("eu"))
 			area="欧美";
 //		area=new String(area.getBytes("iso-8859-1"),"utf-8");
-		System.out.println(area);
+//		System.out.println(area);
 		ranklist=songdao.getHotInArea(area, 50);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("ranklist", ranklist);
@@ -146,15 +148,19 @@ public class SongInfoAction extends ActionSupport{
 		Song song=songdao.getById(idSong);
 		String route=song.getSgRoute();
 		try{
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			InputStream input = new BufferedInputStream(new FileInputStream(route));
-			byte[] bt = new byte[1024];
-			while (input.read(bt) > 0) {
-				bos.write(bt);
-			}
-			this.songStream = new ByteArrayInputStream(bos.toByteArray());
-			bos.close();
-			input.close();
+			AccessSongFile ac=AccessSongFile.getInstance();
+			this.songStream = ac.getSongStream(route);
+//			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			
+//			InputStream input = new BufferedInputStream(new FileInputStream(route));
+			
+//			byte[] bt = new byte[128];
+//			while (input.read(bt) > 0) {
+//				bos.write(bt);
+//			}
+//			this.songStream = new ByteArrayInputStream(bos.toByteArray());
+//			bos.close();
+//			input.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

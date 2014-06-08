@@ -15,18 +15,19 @@ import org.model.Album;
 import org.model.Singer;
 import org.tool.Pager;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AlbumInfoAction extends ActionSupport{
+public class AlbumInfoAction extends ActionSupport {
 	private int idAlbum;
 	private String area;
-	private int pageNow=1;
-	
+	private int pageNow = 1;
+
 	private AlbDao albumdao;
-	
+
 	private ByteArrayInputStream albumImg;
 
-	private String areaq;       //转换后的字符
+	private String areaq; // 转换后的字符
 
 	public int getIdAlbum() {
 		return idAlbum;
@@ -59,63 +60,76 @@ public class AlbumInfoAction extends ActionSupport{
 	public void setAlbumdao(AlbDao albumdao) {
 		this.albumdao = albumdao;
 	}
-	
-	//获取专辑图片
-	public String getImg() throws Exception{
-		Album album=albumdao.getById(idAlbum);
-		if(album!=null && album.getAbPhoto()!=null){
-			albumImg=new ByteArrayInputStream(album.getAbPhoto());
-		}
-		else{
-		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		InputStream input = new BufferedInputStream(new FileInputStream("C:/Users/HP/workspace/ConchSite/WebContent/image/head-default.jpg"));
-		byte[] bt = new byte[1024];
-		while (input.read(bt) > 0) {
-			bos.write(bt);
-		}
-		this.albumImg = new ByteArrayInputStream(bos.toByteArray());
-		bos.close();
-		input.close();
+
+	// 获取专辑图片
+	public String getImg() throws Exception {
+		Album album = albumdao.getById(idAlbum);
+		if (album != null && album.getAbPhoto() != null) {
+			albumImg = new ByteArrayInputStream(album.getAbPhoto());
+		} else {
+			setDefaultAlbumImg();
 		}
 		return SUCCESS;
 	}
-	
-	private void preaction(){
-		if(area.equals("cn"))
-			areaq="华语";
-		if(area.equals("jk"))
-			areaq="日韩";
-		if(area.equals("eu"))
-			areaq="欧美";
+
+	private void preaction() {
+		if (area.equals("cn"))
+			areaq = "华语";
+		if (area.equals("jk"))
+			areaq = "日韩";
+		if (area.equals("eu"))
+			areaq = "欧美";
 	}
-	
-	//根据地域查询
-	public String AlbumInArea(){
+
+	// 根据地域查询
+	public String AlbumInArea() {
 		preaction();
-		int nums=albumdao.getRows("select count(*) from Album as album where album.singer.sgrArea='"+areaq+"'");
-		List albumpage=albumdao.getByArea(areaq, pageNow, 12);
-		Pager pager=new Pager(pageNow,12,nums);
+		int nums = albumdao
+				.getRows("select count(*) from Album as album where album.singer.sgrArea='"
+						+ areaq + "'");
+		List albumpage = albumdao.getByArea(areaq, pageNow, 12);
+		Pager pager = new Pager(pageNow, 12, nums);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("albumpage", albumpage);
 		request.setAttribute("pager", pager);
 		return SUCCESS;
 	}
-	
-	public String allAlbum(){
-		int nums=albumdao.getRows("select count(*) from Album as album");
-		List albumpage=albumdao.getAll(pageNow, 12);
-		Pager pager=new Pager(pageNow,12,nums);
+
+	public String allAlbum() {
+		int nums = albumdao.getRows("select count(*) from Album as album");
+		List albumpage = albumdao.getAll(pageNow, 12);
+		Pager pager = new Pager(pageNow, 12, nums);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("albumpage", albumpage);
 		request.setAttribute("pager", pager);
 		return SUCCESS;
 	}
-	
-	//进入专辑主页,查看专辑详细信息
-	public String albumHome() throws Exception{
-		Album album=albumdao.getById(idAlbum);
+
+	// 进入专辑主页,查看专辑详细信息
+	public String albumHome() throws Exception {
+		Album album = albumdao.getById(idAlbum);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		request.setAttribute("album", album);
 		return SUCCESS;
+	}
+	
+	private void setDefaultAlbumImg(){
+		try{
+			ActionContext ctx=ActionContext.getContext();
+			HttpServletRequest request = (HttpServletRequest)ctx.get(ServletActionContext.HTTP_REQUEST);
+			String uploadFolder = request.getRealPath("");
+			
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			InputStream input = new BufferedInputStream(new FileInputStream(uploadFolder+"/image/head-default.jpg"));
+			byte[] bt = new byte[1024];
+			while (input.read(bt) > 0) {
+				bos.write(bt);
+			}
+			this.albumImg = new ByteArrayInputStream(bos.toByteArray());
+			bos.close();
+			input.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -16,7 +16,7 @@
 //    __sto(_cb,timeout);
 //};
 var playpage;
-function onplay(sgname,sgrName,sgID){
+function onmusicplay(sgname,sgrName,sgID){
 	var addAndplay=function addAndplay(){
 		playpage.myPlaylist.add({
 			title:sgname,
@@ -29,7 +29,7 @@ function onplay(sgname,sgrName,sgID){
 	if(playpage.location.href == "about:blank"){
 		playpage=window.open("../playPage/playPage.htm","playpage");
 		setTimeout(addAndplay,1000);
-//		window.setInterval(onplay, 1000,sgname,sgrName,sgID);
+//		window.setInterval(onmusicplay, 1000,sgname,sgrName,sgID);
 		//playpage.onload=function(){playpage.alert("load ok");};
 	}else{
 		addAndplay();

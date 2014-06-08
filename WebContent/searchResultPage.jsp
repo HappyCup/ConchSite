@@ -44,7 +44,7 @@
 	      <td><div align="left"><a title="<s:property value="#song.sgName"/>" onclick=""><s:property value="#song.sgName"/></a></div></td>
 	      <td style="font-size: 14px"><div align="left"><a title="<s:property value="#singer.sgrName"/>" href="singerHome.action?idSinger=<s:property value="#singer.idSinger"/>" target="_blank"><s:property value="#singer.sgrName"/></a></div></td>
 	      <td><div align="left"><a title="<s:property value="#album.abName"/>" href="#" target="_blank"><s:property value="#album.abName"/></a></div></td>
-	      <th width="30" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','image/1_2.jpg',1)" onclick="javascript:onplay('<s:property value="#song.sgName"/>','<s:property value="#singer.sgrName"/>','<s:property value="#song.idSong"/>');">
+	      <th width="30" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image1','','image/1_2.jpg',1)" onclick="javascript:onmusicplay('<s:property value="#song.sgName"/>','<s:property value="#singer.sgrName"/>','<s:property value="#song.idSong"/>');">
 	      		<img src="image/1_1.jpg" alt="" name="Image1" width="20" height="20" border="0" id="Image1" /></a></th>
 	      <th width="30" scope="col"><a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image111','','image/2-2.jpg',1)" onclick="javascript:onadd('<s:property value="#song.sgName"/>','<s:property value="#singer.sgrName"/>','<s:property value="#song.idSong"/>');">
 	      		<img src="image/2-1.jpg" alt="" name="Image111" width="20" height="20" border="0" id="Image111" /></a></th>

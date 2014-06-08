@@ -51,8 +51,10 @@ function LoginVaildteHandle(){
 				}
 			}catch(error){
 //				alert(xmlHttpRequest.responseText);
-				//location.replace(xmlHttpRequest.responseText);
-				location.href="http://localhost:8081/ConchSite/hailuo.jsp";
+//				location.replace(xmlHttpRequest.responseText);
+//				location.href="http://localhost:8081/ConchSite/hailuo.jsp";
+				location.reload();
+				
 			}
 		}
 	}

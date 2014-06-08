@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://rdsveyyvvmyybjq.mysql.rds.aliyuncs.com:3306/r87w127hywrf6b2j"></property>
+		<property name="username" value="r87w127hywrf6b2j"></property>
+		<property name="password" value="lihuan"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- Dao层bean........................................ -->
+
+	<bean id="AdminDao" class="org.dao.imp.AdminDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="AlbDao" class="org.dao.imp.AlbDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="CmtDao" class="org.dao.imp.CmtDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MsgDao" class="org.dao.imp.MsgDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SingerDao" class="org.dao.imp.SingerDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="SongDao" class="org.dao.imp.SongDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="STLDao" class="org.dao.imp.STLDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="UserDao" class="org.dao.imp.UserDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- 业务层bean....................暂不使用........................... -->
+	<bean id="Login" class="org.service.imp.LoginImp">
+		<property name="userDao">
+			<ref local="UserDao" />
+		</property>
+	</bean>
+
+	<!-- action beans........................................... -->
+	<bean id="loginAction" class="org.action.LoginAction" scope="prototype">
+		<property name="userdao">
+			<ref local="UserDao" />
+		</property>
+	</bean>
+	<bean id="RegisteAction" class="org.action.RegisteAction" scope="prototype">
+		<property name="userdao">
+			<ref local="UserDao" />
+		</property>
+	</bean>
+	<bean id="UserAction" class="org.action.UserAction" scope="prototype">
+		<property name="userdao" >
+			<ref local="UserDao" />
+		</property>
+	</bean>
+	<bean id="SongInfoAction" class="org.action.SongInfoAction" scope="prototype">
+		<property name="songdao">
+			<ref local="SongDao" />
+		</property>
+		<property name="singerdao">
+			<ref local="SingerDao" />
+		</property>
+	</bean>
+	<bean id="SingerInfoAction" class="org.action.SingerInfoAction" scope="prototype">
+		<property name="singerdao">
+			<ref local="SingerDao" />
+		</property>
+	</bean>
+	<bean id="AlbumInfoAction" class="org.action.AlbumInfoAction" scope="prototype">
+		<property name="albumdao">
+			<ref local="AlbDao" />
+		</property>
+	</bean>
+	<bean id="FeedBackAction" class="org.action.FeedBackAction" scope="prototype">
+		<property name="msgdao">
+			<ref local="MsgDao" />
+		</property>
+	</bean>
+	<bean id="SearchAction" class="org.action.SearchAction" scope="prototype">
+		<property name="singerdao">
+			<ref local="SingerDao" />
+		</property>
+		<property name="songdao">
+			<ref local="SongDao" />
+		</property>
+	</bean>
+	<bean id="ShareAndStoreAction" class="org.action.ShareAndStoreAction" scope="prototype">
+		<property name="songdao">
+			<ref local="SongDao" />
+		</property>
+		<property name="stldao">
+			<ref local="STLDao" />
+		</property>
+		<property name="userdao">
+			<ref local="UserDao" />
+		</property>
+	</bean>
+	<bean id="JspToHtml" class="org.action.JspToHtml"></bean>
+</beans>
