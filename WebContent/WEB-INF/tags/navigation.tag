@@ -61,15 +61,15 @@
 				<s:else>
 					<th width="32" height="32" scope="row" id="login_area1">
 					<div class="login logined" id="lng" style="vertical-align: middle; ">
-						<a class="pic" hidefocus="true" target="_blank" href="#">
+						<a class="pic" hidefocus="true" target="_blank" href="userHome.jsp">
 							<img id="myheadpic"
-								src="http://localhost:8081/ConchSite/GetImg.action" width="32"
+								src="GetImg.action" width="32"
 								height="32" />
 						</a>
 						</div>
 						</th>
 					<th width="95" scope="row" align="left" id="login_area2">
-						<a hidefocus="true" id="mynickname" target="_blank" href="#"
+						<a hidefocus="true" id="mynickname" target="_blank" href="userHome.jsp"
 							class="blue">
 							<s:property value="#user.usName" />
 						</a>
