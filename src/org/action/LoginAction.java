@@ -50,12 +50,11 @@ public class LoginAction extends ActionSupport{
 	public void setValiResult(String valiResult) {
 		this.valiResult = valiResult;
 	}
-	public String execute()throws Exception{
+	public String execute() throws Exception{
 		User user=getUserdao().validate(username, userpasswd);
 		if(user!=null){
 			Map session=(Map)ActionContext.getContext().getSession();
 			session.put("user", user);
-			int i=1/0;
 			valiResult="0";        //µÇÂ¼
 		}
 		else{
