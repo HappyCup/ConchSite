@@ -43,16 +43,13 @@ function LoginVaildteHandle(){
 					document.getElementById("login_area1").innerHTML=[
 					                                                  '<div class="login logined" id="lng" style="vertical-align: middle; ">'+
 					                                                  		'<a class="pic" hidefocus="true" target="_blank" href="#">'+
-					                                                  		'<img id="myheadpic" src="http://localhost:8081/ConchSite/GetImg.action" width="32" height="32" />'+
+					                                                  		'<img id="myheadpic" src="GetImg.action" width="32" height="32" />'+
 					                                                  		'</a></div>'];
 					document.getElementById("login_area2").innerHTML=['<a hidefocus="true" id="mynickname" target="_blank" href="#" class="blue">'+name+
 					                                                  		'</a>'];
 					document.getElementById("login_area3").innerHTML='<a hidefocus="true" href="logout.action" class="logout">退出登录</a>';
 				}
 			}catch(error){
-//				alert(xmlHttpRequest.responseText);
-//				location.replace(xmlHttpRequest.responseText);
-//				location.href="http://localhost:8081/ConchSite/hailuo.jsp";
 				location.reload();
 				
 			}

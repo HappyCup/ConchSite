@@ -64,7 +64,6 @@ public class ImageCut {
 			int tran_y=(y*srcHeight/finalHeight);
 			int tran_destW=(destWidth*srcWidth/finalWidth);
 			int tran_destH=(destHeight*srcHeight/finalHeight);
-			System.out.println(x+"|"+y+"|"+destWidth+"|"+destHeight+"|"+srcWidth+"|"+srcHeight+"|"+tran_x+"|"+tran_y+"|"+tran_destW+"|"+tran_destH);
 			if (srcWidth >= destWidth && srcHeight >= destHeight) {
 			//Image image = bi.getScaledInstance(srcWidth, srcHeight,Image.SCALE_AREA_AVERAGING  );//获取缩放后的图片大小
 			cropFilter = new CropImageFilter(tran_x,tran_y,tran_destW ,tran_destH);

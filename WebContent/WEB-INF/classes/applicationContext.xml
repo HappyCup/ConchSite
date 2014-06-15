@@ -156,5 +156,4 @@
 			<ref local="UserDao" />
 		</property>
 	</bean>
-	<bean id="JspToHtml" class="org.action.JspToHtml"></bean>
 </beans>

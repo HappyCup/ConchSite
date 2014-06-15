@@ -76,6 +76,8 @@ public class SongInfoActionTest extends StrutsSpringTestCase{
 		
 		ActionProxy proxy = getActionProxy("/DownLoad");
 		SongInfoAction testAction = (SongInfoAction) proxy.getAction();
+		Map<String, Object> sessionMap = new HashMap<String, Object>();
+		ActionContext.getContext().setSession(sessionMap);
 		
 		String result = proxy.execute();
 		assertNull(testAction.getSongStream());

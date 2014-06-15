@@ -38,9 +38,34 @@ public class LoginActionTest extends StrutsSpringTestCase{
 	}
 	
 	/*
+	 * test the execute method
+	 * Action url: /login
+	 * case : username = godlike userpasswd = 12345 wrong account
+	 */
+	@Test
+	public void testexecute2() throws Exception {
+		request.setParameter("username", "godlike");
+		request.setParameter("userpasswd", "12345");
+		
+		ActionProxy proxy = getActionProxy("/login");
+		
+		Map<String, Object> sessionMap = new HashMap<String, Object>();
+		ActionContext.getContext().setSession(sessionMap);
+		
+		LoginAction loginAction = (LoginAction) proxy.getAction();
+		String result = proxy.execute();
+		User user = (User) sessionMap.get("user");
+		
+		assertNull(user);
+		assertEquals("1",loginAction.getValiResult());
+		assertEquals("success", result);
+	}
+	
+	/*
 	 * test method logout()
 	 * Action url : /logout
 	 */
+	@Test
 	public void testlogout() throws Exception{
 		User user = new User("godlike","123456");
 		ActionProxy proxy = getActionProxy("/logout");
@@ -60,6 +85,7 @@ public class LoginActionTest extends StrutsSpringTestCase{
 	 * Action url: /islogin
 	 * case : logined
 	 */
+	@Test
 	public void testisLogin() throws Exception{
 		User user = new User("godlike","123456");
 		ActionProxy proxy = getActionProxy("/islogin");
@@ -80,6 +106,7 @@ public class LoginActionTest extends StrutsSpringTestCase{
 	 * Action url : /islogin
 	 * case : did not login
 	 */
+	@Test
 	public void testisLogin2() throws Exception{
 		ActionProxy proxy = getActionProxy("/islogin");
 		
@@ -98,11 +125,12 @@ public class LoginActionTest extends StrutsSpringTestCase{
 	 * Action url : /updatePasswd
 	 * case : old password is right
 	 */
+	@Test
 	public void testupdatePassword() throws Exception{
 		request.setParameter("newpasswd", "1234567");
-		
+		request.setParameter("userpasswd", "123456");
 		User user = new User("godlikes","123456");
-		ActionProxy proxy = getActionProxy("/islogin");
+		ActionProxy proxy = getActionProxy("/updatePasswd");
 		
 		Map<String, Object> sessionMap = new HashMap<String, Object>();
 		sessionMap.put("user", user);
@@ -121,11 +149,13 @@ public class LoginActionTest extends StrutsSpringTestCase{
 	 * Action url : /updatePasswd
 	 * case : old password is wrong
 	 */
+	@Test
 	public void testupdatePassword2() throws Exception{
 		request.setParameter("newpasswd", "1234567");
+		request.setParameter("userpasswd", "12345");
 		
-		User user = new User("godlikes","12345");
-		ActionProxy proxy = getActionProxy("/islogin");
+		User user = new User("godlikes","123456");
+		ActionProxy proxy = getActionProxy("/updatePasswd");
 		
 		Map<String, Object> sessionMap = new HashMap<String, Object>();
 		sessionMap.put("user", user);
@@ -133,7 +163,6 @@ public class LoginActionTest extends StrutsSpringTestCase{
 		
 		LoginAction loginAction = (LoginAction) proxy.getAction();
 		String result = proxy.execute();
-		
 		assertEquals("1",loginAction.getValiResult());
 		assertEquals("123456",user.getUsPasswd());
 		assertEquals("success", result);

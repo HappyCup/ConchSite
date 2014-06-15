@@ -132,11 +132,8 @@
             </result>
         </action>
         
-        <!-- 用户主页相关action -->
+        <!-- 上传头像 -->
         <action name="updateAvator" class="UserAction" method="updateAvator">
-           <result name="success">/ValidateResulte.jsp</result>
-        </action>
-        <action name="updatePassWord" class="UserAction" method="updatePassword">
            <result name="success">/ValidateResulte.jsp</result>
         </action>
         
@@ -160,11 +157,5 @@
          <action name="share" class="ShareAndStoreAction" method="addShare">
              <result name="success">/ValidateResulte.jsp</result>
          </action>
-         
-         <!-- JspToHtml -->
-         <action name="ToHtml" class="JspToHtml">
-             <result name="success">/hailuo.html</result>
-         </action>
-         
     </package>
 </struts>

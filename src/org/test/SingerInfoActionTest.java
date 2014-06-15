@@ -29,9 +29,25 @@ public class SingerInfoActionTest extends StrutsSpringTestCase{
 	/*
 	 * test method getImg
 	 * Action url : /SingerImg
+	 * case singer exist
 	 */
 	public void testgetImg() throws Exception{
 		request.setParameter("idSinger", "1");
+		ActionProxy proxy = getActionProxy("/SingerImg");
+		SingerInfoAction testAction = (SingerInfoAction) proxy.getAction();
+		String result = proxy.execute();
+		
+		assertNotNull(testAction.getSingerImg());
+		assertEquals("success",result);
+	}
+	
+	/*
+	 * test method getImg
+	 * Action url : /SingerImg
+	 * case singer not exist
+	 */
+	public void testgetImg2() throws Exception{
+		request.setParameter("idSinger", "999");
 		ActionProxy proxy = getActionProxy("/SingerImg");
 		SingerInfoAction testAction = (SingerInfoAction) proxy.getAction();
 		String result = proxy.execute();

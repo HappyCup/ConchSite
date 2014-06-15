@@ -2,7 +2,6 @@ package org.test;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.action.FeedBackAction;
 import org.apache.struts2.StrutsSpringTestCase;
 import org.junit.Test;
 import org.model.User;
